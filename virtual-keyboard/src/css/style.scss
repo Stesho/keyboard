@@ -1,0 +1,101 @@
+$main-bg-color: #37404d;
+$main-key-color: #fff;
+$second-bg-color: #151e2a;
+$second-key-color: #818181;
+$pressed-bg-color: #71849e;
+
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+}
+
+body {
+  background: #e5e5e5;
+  line-height: 2rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.text {
+  height: 200px;
+  width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2rem;
+  margin: 50px auto 0 auto;
+  padding: 10px;
+  resize: none;
+}
+
+.info {
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+.keyboard {
+  width: 100%;
+  margin: 5px auto;
+  padding: 5px 5px 0 5px;
+  border: 1px solid $second-bg-color;
+  border-radius: 5px;
+  user-select: none;
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 5px 0;
+  }
+  &__key {
+    height: 50px;
+    width: 50px;
+    margin: 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.6rem;
+    border: 0;
+    border-radius: 5px;
+    color: $main-key-color;
+    background-color: $main-bg-color;
+    box-shadow: 0 0 5px #000;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+  &__key.active {  
+    background: $pressed-bg-color;
+  }
+  &__key:hover {
+    background: $pressed-bg-color;
+  }
+  &__backspace {
+    width: 150px;
+  }
+  &__tab {
+    width: 80px;
+  }
+  &__caps-lock {
+    width: 100px;
+  }
+  &__enter {
+    width: 130px;
+  }
+  &__shift {
+    width: 110px;
+  }
+  &__ctr {
+    width: 70px;
+  }
+  &__alt {
+    width: 70px;
+  }
+  &__space {
+    width: 250px;
+  }
+}
+
+.modifier {
+  color: $second-key-color;
+  background-color: $second-bg-color;
+}

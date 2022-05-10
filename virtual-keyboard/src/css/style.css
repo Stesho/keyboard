@@ -1,0 +1,124 @@
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+}
+
+body {
+  background: #e5e5e5;
+  line-height: 2rem;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.text {
+  height: 200px;
+  width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2rem;
+  margin: 50px auto 0 auto;
+  padding: 10px;
+  resize: none;
+}
+
+.info {
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+.keyboard {
+  width: 100%;
+  margin: 5px auto;
+  padding: 5px 5px 0 5px;
+  border: 1px solid #151e2a;
+  border-radius: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.keyboard__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 0 5px 0;
+}
+
+.keyboard__key {
+  height: 50px;
+  width: 50px;
+  margin: 3px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.6rem;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #37404d;
+  -webkit-box-shadow: 0 0 5px #000;
+          box-shadow: 0 0 5px #000;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.keyboard__key.active {
+  background: #71849e;
+}
+
+.keyboard__key:hover {
+  background: #71849e;
+}
+
+.keyboard__backspace {
+  width: 150px;
+}
+
+.keyboard__tab {
+  width: 80px;
+}
+
+.keyboard__caps-lock {
+  width: 100px;
+}
+
+.keyboard__enter {
+  width: 130px;
+}
+
+.keyboard__shift {
+  width: 110px;
+}
+
+.keyboard__ctr {
+  width: 70px;
+}
+
+.keyboard__alt {
+  width: 70px;
+}
+
+.keyboard__space {
+  width: 250px;
+}
+
+.modifier {
+  color: #818181;
+  background-color: #151e2a;
+}
+/*# sourceMappingURL=style.css.map */

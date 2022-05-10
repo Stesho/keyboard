@@ -59,10 +59,11 @@ body {
     border-radius: 5px;
     color: $main-key-color;
     background-color: $main-bg-color;
+    box-shadow: 0 0 5px #000;
     cursor: pointer;
     transition: all 0.5s;
   }
-  &__key.active {
+  &__key.active {  
     background: $pressed-bg-color;
   }
   &__key:hover {
@@ -95,5 +96,6 @@ body {
 }
 
 .modifier {
+  color: $second-key-color;
   background-color: $second-bg-color;
 }

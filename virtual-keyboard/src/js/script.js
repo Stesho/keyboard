@@ -1,5 +1,4 @@
-/* eslint-disable import/extensions */
-/* eslint-disable operator-linebreak */
+// eslint-disable-next-line import/extensions
 import { keyboardFragment, keyboardKeys } from './keyboardLayout.js';
 
 class Keyboard {
@@ -24,8 +23,7 @@ class Keyboard {
     keyboardRow.classList.add('keyboard__row');
 
     language.classList.add('info');
-    language.textContent =
-      'Use Ctrl+Alt to switch language.';
+    language.textContent = 'Use Ctrl+Alt to switch language.';
 
     this.keyboard.appendChild(keyboardFragment);
     this.showLanguage(this.lang);
@@ -76,12 +74,12 @@ class Keyboard {
         } else if (!keyboardKeys[e.code].func) {
           e.preventDefault();
           this.insertText(key.textContent);
-        } else if (e.key === 'Shift' && !e.repeat) {
+        } else if ((e.code === 'ShiftLeft' || e.code === 'ShiftRight') && !e.repeat) {
           e.preventDefault();
           this.switchCaps(e.shiftKey);
         } else if (e.code === 'Tab') {
           e.preventDefault();
-          this.insertText('\t');
+          this.insertText('    ');
         } else if (e.code === 'Enter') {
           e.preventDefault();
           this.insertText('\n');
@@ -114,28 +112,32 @@ class Keyboard {
 
       if (e.code !== 'CapsLock') {
         key.classList.remove('active');
-        if (e.key === 'Shift') {
+        if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
           e.preventDefault();
           this.switchCaps(e.shiftKey);
         }
       }
     });
 
-    this.keyboard.addEventListener('click', (e) => {
+    this.keyboard.addEventListener('mousedown', (e) => {
       this.textarea.focus();
       const eventKeyDown = new KeyboardEvent('keydown', {
         bubbles: true,
         cancelable: true,
         code: e.target.id,
+        shiftKey: (e.target.id === 'ShiftLeft' || e.target.id === 'ShiftRight'),
         view: window,
       });
       document.dispatchEvent(eventKeyDown);
+    });
 
+    this.keyboard.addEventListener('mouseup', (e) => {
       this.textarea.focus();
       const eventKeyUp = new KeyboardEvent('keyup', {
         bubbles: true,
         cancelable: true,
         code: e.target.id,
+        shiftKey: !(e.target.id === 'ShiftLeft' || e.target.id === 'ShiftRight'),
         view: window,
       });
       document.dispatchEvent(eventKeyUp);
@@ -168,10 +170,9 @@ class Keyboard {
   insertText(chars) {
     const cursorAt = this.textarea.selectionStart;
 
-    this.textarea.value =
-      this.textarea.value.slice(0, cursorAt) +
-      chars +
-      this.textarea.value.slice(this.textarea.selectionEnd);
+    this.textarea.value = this.textarea.value.slice(0, cursorAt)
+      + chars
+      + this.textarea.value.slice(this.textarea.selectionEnd);
 
     this.textarea.selectionStart = cursorAt + chars.length;
     this.textarea.selectionEnd = this.textarea.selectionStart;
@@ -183,9 +184,8 @@ class Keyboard {
     } else {
       const cursorAt = Math.max(0, this.textarea.selectionStart - 1);
 
-      this.textarea.value =
-        this.textarea.value.slice(0, cursorAt) +
-        this.textarea.value.slice(this.textarea.selectionEnd);
+      this.textarea.value = this.textarea.value.slice(0, cursorAt)
+      + this.textarea.value.slice(this.textarea.selectionEnd);
 
       this.textarea.selectionStart = cursorAt;
       this.textarea.selectionEnd = this.textarea.selectionStart;
@@ -198,9 +198,8 @@ class Keyboard {
     } else {
       const cursorAt = this.textarea.selectionStart;
 
-      this.textarea.value =
-        this.textarea.value.slice(0, cursorAt) +
-        this.textarea.value.slice(cursorAt + 1);
+      this.textarea.value = this.textarea.value.slice(0, cursorAt)
+      + this.textarea.value.slice(cursorAt + 1);
 
       this.textarea.selectionStart = cursorAt;
       this.textarea.selectionEnd = this.textarea.selectionStart;
@@ -243,18 +242,18 @@ class Keyboard {
             e.textContent = shiftKey ? '(' : '9';
           } else if (e.id === 'Digit0') {
             e.textContent = shiftKey ? ')' : '0';
+          } else if (e.id === 'Minus') {
+            e.textContent = shiftKey ? '_' : '-';
+          } else if (e.id === 'Equal') {
+            e.textContent = shiftKey ? '+' : '=';
+          } else if (e.id === 'Backslash') {
+            e.textContent = shiftKey ? '|' : '\\';
           } else if (e.id === 'Backquote' && this.lang === 'en') {
             e.textContent = shiftKey ? '~' : '`';
-          } else if (e.id === 'Minus' && this.lang === 'en') {
-            e.textContent = shiftKey ? '_' : '-';
-          } else if (e.id === 'Equal' && this.lang === 'en') {
-            e.textContent = shiftKey ? '+' : '=';
           } else if (e.id === 'BracketLeft' && this.lang === 'en') {
             e.textContent = shiftKey ? '{' : '[';
           } else if (e.id === 'BracketRight' && this.lang === 'en') {
             e.textContent = shiftKey ? '}' : ']';
-          } else if (e.id === 'Backslash' && this.lang === 'en') {
-            e.textContent = shiftKey ? '|' : '\\';
           } else if (e.id === 'Semicolon' && this.lang === 'en') {
             e.textContent = shiftKey ? ':' : ';';
           } else if (e.id === 'Quote' && this.lang === 'en') {
@@ -280,3 +279,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const keyboard = new Keyboard();
   keyboard.init();
 });
+
+// eslint-disable-next-line no-alert
+alert('Привет, я забыл ссылку на pull request. Можешь не искать, вот она: https://github.com/Stesho/keyboard/pull/2 Спасибо, за понимание, и удачи в учебе)');

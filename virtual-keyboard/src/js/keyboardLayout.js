@@ -404,7 +404,7 @@ keyboardLayout.forEach((line) => {
     keyElement.setAttribute('id', key.code);
     keyElement.setAttribute('type', 'button');
     keyElement.classList.add('keyboard__key');
-    
+
     if (key.func) {
       keyElement.classList.add('modifier');
     }

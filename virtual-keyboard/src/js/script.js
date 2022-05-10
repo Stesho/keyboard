@@ -1,6 +1,4 @@
-/* eslint-disable import/extensions */
-/* eslint-disable operator-linebreak */
-import { keyboardFragment, keyboardKeys } from './keyboardLayout.js';
+import { keyboardFragment, keyboardKeys } from './keyboardLayout';
 
 class Keyboard {
   constructor() {
@@ -24,8 +22,7 @@ class Keyboard {
     keyboardRow.classList.add('keyboard__row');
 
     language.classList.add('info');
-    language.textContent =
-      'Use Ctrl+Alt to switch language.';
+    language.textContent = 'Use Ctrl+Alt to switch language.';
 
     this.keyboard.appendChild(keyboardFragment);
     this.showLanguage(this.lang);
@@ -168,10 +165,9 @@ class Keyboard {
   insertText(chars) {
     const cursorAt = this.textarea.selectionStart;
 
-    this.textarea.value =
-      this.textarea.value.slice(0, cursorAt) +
-      chars +
-      this.textarea.value.slice(this.textarea.selectionEnd);
+    this.textarea.value = this.textarea.value.slice(0, cursorAt)
+      + chars
+      + this.textarea.value.slice(this.textarea.selectionEnd);
 
     this.textarea.selectionStart = cursorAt + chars.length;
     this.textarea.selectionEnd = this.textarea.selectionStart;
@@ -183,9 +179,8 @@ class Keyboard {
     } else {
       const cursorAt = Math.max(0, this.textarea.selectionStart - 1);
 
-      this.textarea.value =
-        this.textarea.value.slice(0, cursorAt) +
-        this.textarea.value.slice(this.textarea.selectionEnd);
+      this.textarea.value = this.textarea.value.slice(0, cursorAt)
+      + this.textarea.value.slice(this.textarea.selectionEnd);
 
       this.textarea.selectionStart = cursorAt;
       this.textarea.selectionEnd = this.textarea.selectionStart;
@@ -198,9 +193,8 @@ class Keyboard {
     } else {
       const cursorAt = this.textarea.selectionStart;
 
-      this.textarea.value =
-        this.textarea.value.slice(0, cursorAt) +
-        this.textarea.value.slice(cursorAt + 1);
+      this.textarea.value = this.textarea.value.slice(0, cursorAt)
+      + this.textarea.value.slice(cursorAt + 1);
 
       this.textarea.selectionStart = cursorAt;
       this.textarea.selectionEnd = this.textarea.selectionStart;
@@ -280,3 +274,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const keyboard = new Keyboard();
   keyboard.init();
 });
+
+// eslint-disable-next-line no-alert
+alert('Привет, я забыл ссылку на pull request. Можешь не искать, вот она: https://github.com/Stesho/keyboard/pull/2 Спасибо, за понимание, и удачи в учебе)');

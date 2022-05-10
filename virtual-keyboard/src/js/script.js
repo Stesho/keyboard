@@ -1,4 +1,5 @@
-import { keyboardFragment, keyboardKeys } from './keyboardLayout';
+// eslint-disable-next-line import/extensions
+import { keyboardFragment, keyboardKeys } from './keyboardLayout.js';
 
 class Keyboard {
   constructor() {
